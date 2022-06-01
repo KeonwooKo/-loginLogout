@@ -3,7 +3,7 @@
 # WEB 期末大作业 - 쇼핑몰 제작
 
 # 개발 환경
-Backend - node.js /n
+Backend - node.js 
 Frontend - react
 
 # 기능 - 로그인, 
