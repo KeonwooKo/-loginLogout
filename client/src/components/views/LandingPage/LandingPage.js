@@ -1,17 +1,39 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react'
+import axios from 'axios' 
+import { useNavigate } from 'react-router-dom';
 
 function LandingPage() {
+  let navigate = useNavigate();
 
-useEffect(() => {
-  axios.get('/api/hello')
-  .then(response => {console.log(response.data)})
+  useEffect(() => {
+    axios.get('/api/hello')
+      .then(response => { console.log(response.data) })
+  }, [])
 
-}, [])
+  const onClickHandler = () => {
+    axios.get("/api/users/logout")
+        .then(response => {
+          if (response.data.success) {
+            alert("success logout")
+            navigate('/login')
+          } else {
+            alert("failed to logout ")
+          }
+    })
+  }
 
   return (
-    <div>LandingPage</div>
-  ) 
+    <div style={{
+      display: 'flex', justifyContent: 'center', alignItems: 'center',
+      width: '100%', height: '100vh'
+    }}>
+      <h2>First Page</h2>
+      <button onClick={onClickHandler}>  
+        logout
+      </button>
+
+    </div>
+  )
 }
 
-export default LandingPage 
+export default LandingPage

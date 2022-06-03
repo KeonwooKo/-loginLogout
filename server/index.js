@@ -17,14 +17,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const mongoose = require('mongoose');
-const { json } = require('express/lib/response');
-const req = require('express/lib/request');
-const res = require('express/lib/response');
 mongoose.connect(config.mongoURI
 ).then(() => console.log('MongoDB Connected...')
 ).catch(err => console.log(err))
-
-app.get('/', (req, res) => res.send('hello world hello world'))
 
 app.get('/api/hello', (req, res) => {
      res.send("Hello World")
